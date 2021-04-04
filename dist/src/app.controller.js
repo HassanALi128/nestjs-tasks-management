@@ -9,20 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetTasksFilterDto = void 0;
-const class_validator_1 = require("class-validator");
-const tasks_model_1 = require("../tasks.model");
-class GetTasksFilterDto {
-}
+exports.AppController = void 0;
+const common_1 = require("@nestjs/common");
+const app_service_1 = require("./app.service");
+let AppController = class AppController {
+    constructor(appService) {
+        this.appService = appService;
+    }
+    getHello() {
+        return this.appService.getHello();
+    }
+};
 __decorate([
-    class_validator_1.IsOptional(),
-    class_validator_1.IsIn([tasks_model_1.TaskStatus.DONE, tasks_model_1.TaskStatus.IN_PROGRESS, tasks_model_1.TaskStatus.OPEN]),
-    __metadata("design:type", String)
-], GetTasksFilterDto.prototype, "status", void 0);
-__decorate([
-    class_validator_1.IsOptional(),
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], GetTasksFilterDto.prototype, "search", void 0);
-exports.GetTasksFilterDto = GetTasksFilterDto;
-//# sourceMappingURL=get-tasks-filters.dto.js.map
+    common_1.Get(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "getHello", null);
+AppController = __decorate([
+    common_1.Controller(),
+    __metadata("design:paramtypes", [app_service_1.AppService])
+], AppController);
+exports.AppController = AppController;
+//# sourceMappingURL=app.controller.js.map
